@@ -1,3 +1,4 @@
+
 #Week of 14 Homework Node Express Handlebars
 
 ### Overview
@@ -111,7 +112,8 @@ You will be fully capable of doing this homework by the end of Saturday's class.
 
 1. Inside your `burger` directory, create a folder named `controllers`.
 
-2. In `controllers`, create the `burgers_controller.js` file.
+2. In `controllers`, create the `pub
+` file.
 
 3. Inside the `burgers_controller.js` file, import the following:
 	* Express

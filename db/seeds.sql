@@ -1,4 +1,6 @@
-INSERT INTO burgers (id,burger_name,devouered ) VALUES ('001,Hamburger,flase');
+INSERT INTO burgers (burger_name,devouered ) VALUES ('Ham_burger',false);
+INSERT INTO burgers (burger_name,devouered ) VALUES ('Cheese_burger',false);
+INSERT INTO burgers (burger_name,devouered ) VALUES ('Bacon_Cheeseburger',false);
 
 
 
