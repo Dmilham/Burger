@@ -5,7 +5,7 @@
 
 <ul>
   {{#each burger}}
-    {{#unless this.devour}}
+    {{#unless this.devouered}}
       <li>
         {{this.burger_name}}
 
@@ -22,7 +22,7 @@
 
 <ul>
   {{#each burger}}
-    {{#if this.devour}}
+    {{#if this.devouered}}
       <li>
         {{this.burger_name}}
       </li>

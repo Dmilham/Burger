@@ -12,7 +12,7 @@ app.use(express.static(process.cwd() + '/public'));
 var jsonParser = bodyParser.json()
 
 // creates application/x-www-form-urlencoded parser==============
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.use(bodyParser.urlencoded({ extended: false }));
  
 // POST /login gets urlencoded bodies============================ 
 app.use(methodOverride('_method'));
