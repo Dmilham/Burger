@@ -11,7 +11,7 @@ CREATE TABLE burgers
 	id int NOT NULL AUTO_INCREMENT,
 	burger_name varchar(255) NOT NULL,
 	devouered BOOL default false,
-	date   TIMESTAMP,
+	date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
 	
 );

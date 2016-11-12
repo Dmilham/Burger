@@ -2,8 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var app = express();
-var port = 3000;
-var connection = require('/config/connection.js')
+var port = process.env.PORT || 3000;
+
+app.use(express.static(process.cwd() + '/public'));
 
 // bodyParser middleware robust==================================
 
@@ -14,16 +15,15 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
  
 // POST /login gets urlencoded bodies============================ 
-app.post('/login', urlencodedParser, function (req, res) {
-  if (!req.body) return res.sendStatus(400)
-  res.send('welcome, ' + req.body.username)
-})
- 
+app.use(methodOverride('_method'));
+var exphbs = require('express-handlebars');
+app.engine('handlebars', exphbs({
+	defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
 // POST /api/users gets JSON bodies============================== 
-app.post('/api/users', jsonParser, function (req, res) {
-  if (!req.body) return res.sendStatus(400)
-  // create user in req.body 
-})
+var routes = require('./controllers/burgers_controller.js');
+app.use('/', routes);
 
 // Listener======================================================
 app.listen(port, function () {

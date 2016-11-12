@@ -1,27 +1,30 @@
-var router = require('express');
-var connection = require('../config/connection.js');
-var router = express.Router();
 
+
+var express = require('express');
+var router = express.Router();
+var burger = require('../models/burger.js');
 
 router.get('/', function (req, res) {
-	res.redirect('/burgers');
+	res.redirect('/index');
 });
 
-router.get('/burgers', function (req, res) {
+router.get('/index', function (req, res) {
 	burger.all(function (data) {
-		var hbsObject = { cats: data };
-		console.log(hbsObject);
-		res.render('index', hbsObject);
+		var object = { burger: data };
+		res.render('index', object);
 	});
 });
 
-router.put('/burgers/update/<:burger_name</:burger_>', function (req, res) {
-	var condition = 'id = ' + req.params.id;
+router.post('/index/create', function (req, res) {
+	console.log(req.body.entry);
+	burger.insert(req.body.entry ,function () {
+		res.redirect('/index');
+	});
+});
 
-	console.log('condition', condition);
-
-	burger.update({ burger_name: req.body.sleepy }, condition, function () {
-		res.redirect('/cats');
+router.put('/index/update/:id', function (req, res) {
+	burger.update(req.params.id , function () {
+		res.redirect('/index');
 	});
 });
 
